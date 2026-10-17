@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: free-news-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: FREENEWS_SNAPSHOT
+        value: /tmp/snapshot.json

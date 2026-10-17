@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "free-news-api"
+version = "1.0.0"
+description = "Free, unlimited, self-hosted API for the world's top trending news. Clusters stories across 50+ outlets. NewsAPI.org-compatible. Free hosted JSON via GitHub Pages. MCP server included."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Ethos6" }]
+keywords = ["news", "news-api", "trending", "rss", "headlines", "newsapi", "google-news", "google-trends", "mcp", "llm", "ai-agents", "self-hosted", "github-pages"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Framework :: FastAPI",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Internet :: WWW/HTTP",
+]
+dependencies = [
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.29",
+  "curl_cffi>=0.10",
+  "feedparser>=6.0",
+]
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.10"]
+dev = ["pytest>=8", "httpx>=0.27", "ruff>=0.5", "mcp>=1.10"]
+
+[project.scripts]
+freenews = "freenews.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Ethos6/free-news-api"
+Issues = "https://github.com/Ethos6/free-news-api/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["freenews"]
+
+[tool.pytest.ini_options]
+pythonpath = ["tests"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["B008", "E501"]
