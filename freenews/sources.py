@@ -50,7 +50,6 @@ PUBLISHER_FEEDS: list[Source] = [
     _s("cbs-world", "CBS News", "https://www.cbsnews.com/latest/rss/world", "world", "us"),
     _s("abcnews-intl", "ABC News", "https://abcnews.go.com/abcnews/internationalheadlines", "world", "us"),
     _s("fox-world", "Fox News", "https://moxie.foxnews.com/google-publisher/world.xml", "world", "us", weight=0.9),
-    _s("wapo-world", "The Washington Post", "https://feeds.washingtonpost.com/rss/world", "world", "us", weight=1.2),
     _s("independent-world", "The Independent", "https://www.independent.co.uk/news/world/rss", "world", "gb"),
     _s("euronews", "Euronews", "https://www.euronews.com/rss?format=mrss&level=theme&name=news", "world", "int"),
     _s("toi-top", "The Times of India", "https://timesofindia.indiatimes.com/rssfeedstopstories.cms", "top", "in"),
@@ -108,7 +107,6 @@ PUBLISHER_FEEDS: list[Source] = [
     _s("npr-health", "NPR", "https://feeds.npr.org/1128/rss.xml", "health", "us"),
     _s("nyt-health", "The New York Times", "https://rss.nytimes.com/services/xml/rss/nyt/Health.xml", "health", "us", weight=1.2),
     # ---- sports
-    _s("espn", "ESPN", "https://www.espn.com/espn/rss/news", "sports", "us", weight=1.1),
     _s("bbc-sport", "BBC Sport", "https://feeds.bbci.co.uk/sport/rss.xml", "sports", "gb", weight=1.2),
     _s("guardian-sport", "The Guardian", "https://www.theguardian.com/sport/rss", "sports", "gb"),
     # ---- entertainment

@@ -280,7 +280,8 @@ class NewsHub:
         return stories[:limit]
 
     def trend_items(self, geo: str | None = None) -> dict:
-        geos = [geo.upper()] if geo else list(self.trends)
+        order = [g.upper() for g in self.settings.trend_geos]
+        geos = [geo.upper()] if geo else [g for g in order if g in self.trends] + [g for g in self.trends if g not in order]
         return {
             "google_trends": {g: [t.model_dump() for t in self.trends.get(g, [])] for g in geos},
             "wikipedia_most_read": [t.model_dump() for t in self.wikipedia],
