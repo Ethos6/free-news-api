@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "freenews": {
+      "command": "freenews",
+      "args": ["mcp"]
+    }
+  }
+}

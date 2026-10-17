@@ -1,0 +1,12 @@
+<!doctype html>
+<!-- Zero-backend news widget using the free hosted JSON API (GitHub Pages). -->
+<meta charset="utf-8">
+<ul id="news">Loading…</ul>
+<script>
+fetch("https://ethos6.github.io/free-news-api/v1/trending/technology.json")
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById("news").innerHTML = d.stories.slice(0, 10)
+      .map(s => `<li><a href="${s.url}">${s.title}</a> — ${s.sources_count} outlets</li>`).join("");
+  });
+</script>
