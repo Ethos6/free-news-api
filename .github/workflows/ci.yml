@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: ruff check .
+      - run: pytest -v
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: docker build -t free-news-api .
+      - name: Smoke test container (real feeds)
+        run: |
+          docker run -d -p 8000:8000 --name fn free-news-api
+          for i in $(seq 1 30); do curl -sf localhost:8000/health && break; sleep 1; done
+          sleep 25   # first refresh
+          curl -s localhost:8000/health
+          curl -s "localhost:8000/v1/trending?limit=5&articles=1" | python3 -m json.tool | head -60
