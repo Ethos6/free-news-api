@@ -8,6 +8,7 @@ FreeNews follows 50+ major newsrooms and 20+ Google News editions. It groups art
 You can use the free hosted JSON with no server, or self-host the live API. It also works as a drop-in replacement for NewsAPI.org and includes an MCP server for AI agents.
 
 [![CI](https://github.com/Ethos6/free-news-api/actions/workflows/ci.yml/badge.svg)](https://github.com/Ethos6/free-news-api/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/Ethos6/free-news-api)](https://github.com/Ethos6/free-news-api/releases)
 [![Hosted API](https://github.com/Ethos6/free-news-api/actions/workflows/pages.yml/badge.svg)](https://ethos6.github.io/free-news-api/)
 [![Feed health](https://github.com/Ethos6/free-news-api/actions/workflows/feed-health.yml/badge.svg)](https://github.com/Ethos6/free-news-api/actions/workflows/feed-health.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -15,6 +16,10 @@ You can use the free hosted JSON with no server, or self-host the live API. It a
 ![Docker](https://img.shields.io/badge/docker-ready-2496ED?logo=docker&logoColor=white)
 
 **[Live demo](https://ethos6.github.io/free-news-api/)** · [Hosted API](#-option-1-free-hosted-api-zero-setup) · [Self-host](#-option-2-self-host-the-live-api) · [Endpoints](#-endpoints) · [How trending works](#-how-trending-works) · [NewsAPI drop-in](#-drop-in-replacement-for-newsapiorg) · [MCP](#-mcp-server-for-ai-agents)
+
+<img src="docs/demo.gif" alt="FreeNews web UI with live trending stories" width="850">
+
+<sub>Recorded automatically by the <a href="https://github.com/Ethos6/free-news-api/actions/workflows/demo.yml">Demo GIF workflow</a> with live feeds from a GitHub runner.</sub>
 
 </div>
 
