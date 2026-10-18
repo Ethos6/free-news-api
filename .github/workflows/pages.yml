@@ -26,16 +26,16 @@ jobs:
       FREENEWS_COUNTRIES: us,gb,in,au,ca,sg,za,ng
       FREENEWS_TREND_GEOS: US,GB,IN,AU,CA
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip
       - run: pip install .
       - name: Build static API
         run: freenews build --out site --base-url "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
 
@@ -47,4 +47,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
