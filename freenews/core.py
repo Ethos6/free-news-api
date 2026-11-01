@@ -269,10 +269,14 @@ class NewsHub:
         if cached and cached[0] == self._version:
             return cached[1][:limit]
         window = window_hours or self.settings.trending_window_hours
-        since = _iso(_now() - timedelta(hours=window))
-        arts = self._filter(country=country, since=since)
+        now = _now()
+        arts = self._filter(country=country, since=_iso(now - timedelta(hours=window)))
         stories = cluster_articles(
-            arts, weights=self.weights, trend_terms=self.trend_terms(), half_life_hours=self.settings.half_life_hours
+            arts,
+            weights=self.weights,
+            trend_terms=self.trend_terms(),
+            now=now,
+            half_life_hours=self.settings.half_life_hours,
         )
         if category and category not in ("all", "top"):
             stories = [s for s in stories if s.category == category]
