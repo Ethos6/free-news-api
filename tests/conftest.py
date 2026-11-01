@@ -10,6 +10,13 @@ from freenews.sources import Source
 from freenews.trends import parse_google_trends, parse_wikipedia_mostread
 
 FIX = Path(__file__).parent / "fixtures"
+NOW = datetime(2026, 10, 17, 12, tzinfo=timezone.utc)
+
+
+@pytest.fixture(autouse=True)
+def frozen_clock(monkeypatch):
+    # The fixtures are dated 2026-10-17; scoring decays with a short half-life, so pin the clock next to them.
+    monkeypatch.setattr("freenews.core._now", lambda: NOW)
 
 SOURCES = [
     Source("bbc-world", "BBC News", "https://feeds.bbci.co.uk/news/world/rss.xml", "world", "gb", weight=1.3),
