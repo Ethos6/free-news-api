@@ -2,6 +2,8 @@
 
 # 🌍 FreeNews API
 
+![FreeNews API logo](free-news-api-mark.svg)
+
 **A free news API for the world's top trending stories. No API key, no quotas.**
 
 FreeNews follows 50+ major newsrooms and 20+ Google News editions. It groups articles about the same event and ranks stories by how many independent outlets are covering them right now.<br>
@@ -50,6 +52,10 @@ curl https://ethos6.github.io/free-news-api/v1/trending.json
   ]
 }
 ```
+
+## How it works
+
+FreeNews fetches stories from its configured news sources and Google News editions, normalizes and groups reports about the same event, then ranks groups using current coverage across independent outlets. The API serves the resulting stories as JSON, and the same data is available through the MCP server. The existing “How trending works” section explains the scoring details.
 
 ## Why?
 
